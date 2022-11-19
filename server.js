@@ -20,5 +20,6 @@ app.post('/merge', upload.array('pdfs', 2), function (req, res, next) {
   })
 
 app.listen(port, () => {
-  console.log(`Example app listening on port https://localhost${port}`)
+ // console.log(`Example app listening on port https://localhost${port}`)
+ console.log("server listening to port "+port);
 })
