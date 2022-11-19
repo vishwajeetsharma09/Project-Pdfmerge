@@ -2,7 +2,7 @@ const PDFMerger = require('pdf-merger-js');
 
 var merger = new PDFMerger();
 
-const merger=async (p1, p2) => {
+const mergerpdf=async (p1, p2) => {
   await merger.add('amey condonation.pdf');  //merge all pages. parameter is the path to file and filename.
   await merger.add('DUK1738934.pdf');  //merge all pages. parameter is the path to file and filename.
 //   await merger.add('pdf2.pdf', 2); // merge only page 2
@@ -17,4 +17,4 @@ const merger=async (p1, p2) => {
   // const mergedPdfBuffer = await merger.saveAsBuffer();
   // fs.writeSync('merged.pdf', mergedPdfBuffer);
 }
-module.exports={merger}
+module.exports={mergerpdf}

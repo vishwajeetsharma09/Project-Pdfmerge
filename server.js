@@ -2,8 +2,9 @@ const express = require('express')
 const path = require('path')
 const app = express()
 const multer  = require('multer')
-const merger = require('merger')
+const {mergerpdf} =require('./merger')
 const upload = multer({ dest: 'uploads/' })
+app.use('/static', express.static('public'))
 const port = 3000
 
 app.get('/', (req, res) => {
@@ -11,9 +12,9 @@ app.get('/', (req, res) => {
 })
 app.post('/merge', upload.array('pdfs', 2), function (req, res, next) {
     console.log(req.files)
-    merger(path.join(__dirname, req.files[0].path),path.join(__dirname, req.files[1].path))
-    res.redirect("https://localhost:3000/")
-    // res.send({data: req.files})
+   mergerpdf(path.join(__dirname, req.files[0].path), path.join(__dirname, req.files[1].path))
+   //res.send({data: req.files})
+    res.redirect("https://localhost:3000/static/merged.pdf" )
     // req.files is array of `photos` files
     // req.body will contain the text fields, if there were any
   })
